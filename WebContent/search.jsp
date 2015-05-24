@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 align="center" style="color:red;">List of the books</h1>
+	<h1 align="center" style="color:red;">Search</h1>
 </body>
 </html>

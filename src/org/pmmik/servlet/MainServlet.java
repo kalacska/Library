@@ -36,12 +36,20 @@ public class MainServlet extends HttpServlet {
 						   "	<title>Library cím</title>"+
 						   "</head>"+
 						   "<body>"+
-						   "	<h1 align='center' style='color:red;'>Library Services</h1>"+
-						   "	<table align='center' cellspacing='10'>"+
+						   "<h1 align='center' style='color:red;'>Library Services</h1>"+
+						   "	<table align='center' border='1'>"+
 						   "	<tr>"+
-						   "	<td><a href='C:\\Users\\Patrik\\Documents\\workspace\\Library\\WebContent\\listofbooks.jsp'>List of books</a></td><td><a href='Search.jsp'>Search</a></td>"+
+						   "	<td>Name:</td><td><input type='text' name='name'/></td>"+
+						   "	</tr>"+
+						   "	<tr>"+
+						   "	<td>Password:</td><td><input type='password' name='password'/></td>"+
+						   "	</tr>"+
+						   "	<tr>"+
+						   "	<td colspan='2' align='center'><input type='submit' name='submit' value='Login'/></td>"+
 						   "	</tr>"+
 						   "	</table>"+
+						   "<p align='center'><a href='\\signup.jsp'>Signup</p><br><br>"+
+						   "<a href='\\listofbooks.jsp'>List of books</a>    <a href='\\search.jsp'>Search</a>"+
 						   "</body>"+
 						   "</html>";
 		
