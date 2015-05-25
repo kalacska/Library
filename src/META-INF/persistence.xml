@@ -13,7 +13,7 @@
 			<!-- <property name="javax.persistence.schema-generation.database.action" 
 				value="create"/> -->
 
-			<property name="javax.persistence.sql-load-script-source" value="META-INF/sql/student.sql" />
+			<!-- <property name="javax.persistence.sql-load-script-source" value="META-INF/sql/MAJD_ILYET_IS_CSINÁLUNK.sql" /> -->
 
 			<property name="eclipselink.target-database" value="Derby" />
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" />
