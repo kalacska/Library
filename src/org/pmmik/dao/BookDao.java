@@ -1,5 +1,6 @@
 package org.pmmik.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -19,24 +20,31 @@ public class BookDao extends AbstractDao<Book, Integer> {
 	}
 	
 	public List<Book> searchByAuthor(String name){
-		String sqlCommand = String.format("select b from %s b where b.%s = '*%s*'",Book.TABLE_NAME, Book.C_AUTHOR, name); //$NON-NLS-1$
+		String sqlCommand = String.format("select b from %s b where b.%s='*%s*'", Book.TABLE_NAME, Book.AUTHOR, name); //$NON-NLS-1$
 		Query q = this.getEntityManager().createQuery(sqlCommand);
 		
 		try{
-			return (List<Book>) q.getResultList();
+			List<Book> result = new ArrayList<>();
+			for (Object item : q.getResultList()) {
+				result.add((Book) item);
+			}
+			return result;
 		}catch(Exception e){
 			return null;
 		}
 	}
 	
 	public List<Book> serchByTitle(String title){
-		String sqlCommand=String.format("select b from %s b where b.%s='*%s*'",Book.TABLE_NAME,Book.C_TITLE,title);
+		String sqlCommand=String.format("select b from %s b where b.%s='*%s*'",Book.TABLE_NAME,Book.TITLE,title); //$NON-NLS-1$
 		Query q=this.getEntityManager().createQuery(sqlCommand);
 		
 		try {
-			return (List<Book>) q.getResultList();
+			List<Book> result = new ArrayList<>();
+			for (Object item : q.getResultList()) {
+				result.add((Book) item);
+			}
+			return result;
 		} catch (Exception e) {
-			// TODO: handle exception
 			return null;
 		}
 	}
