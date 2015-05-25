@@ -23,8 +23,7 @@
 				buffer.append("<td>"); //$NON-NLS-1$
 				buffer.append(book.getTitle());
 				buffer.append("</td>"); //$NON-NLS-1$
-				buffer.append("</tr>");	//$NON-NLS-1$	
-						
+				buffer.append("</tr>");	//$NON-NLS-1$
 			}
 		return buffer.toString();
 		}
@@ -41,11 +40,11 @@
 				</tr>
 			</thead>
 			<tbody>
-
-				<tr><td>
-					<table>
-					<%=generateTable(books) %>
-					 </table>
+				<tr>
+					<td>
+						<table>
+							<%=generateTable(books) %>
+					 	</table>
 					 </td>
 				</tr>
 			</tbody>
