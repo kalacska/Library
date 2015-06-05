@@ -7,20 +7,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="" method="post">
-	<h1 style="color:red;" align="center">Signup</h1>
+	<form action="SignupServlet" method="post">
+	<h1 align="center">Signup</h1>
 		<table align="center" border="1">
 			<tr>
 				<td>Name:</td>
-				<td><input type='text' name='name'/></td>
+				<td><input type='text' name='name' required/></td>
 			</tr>
 			<tr>
 				<td>Password:</td>
-				<td><input type='password' name='password'/></td>
+				<td><input type='password' name='password' required/></td>
 			</tr>
 			<tr>
 				<td>E-mail:</td>
-				<td><input type='text' name='email'/></td>
+				<td><input type='text' name='email' required/></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type='submit' name='submit' value='Signup'/></td>

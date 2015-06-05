@@ -75,7 +75,6 @@ public class SearchServlet extends HttpServlet {
 					   "</head>"+
 					   "<body>"+
 					   "<p align='center'>No result!</p>"+
-					   rBtnValue+
 					   "<p align='center'><a href='\\index.html'>Return Home</p><br><br>"+
 					   "</body>"+
 					   "</html>";
@@ -99,7 +98,8 @@ public class SearchServlet extends HttpServlet {
 				}
 			
 							   htmlMessage+="	</table>"+
-							   "<p align='center'><a href='\\index.html'>Return Home</p><br><br>"+
+							   "<p align='center'><a href='\\index.html'>Return Home</p>"+
+							   "<p align='center'><a href='\\search.jsp'>Return Search</p><br><br>"+
 							   "</body>"+
 							   "</html>";
 			
