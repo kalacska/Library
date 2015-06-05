@@ -51,7 +51,7 @@ public class BookDao extends AbstractDao<Book, Integer> {
 	}
 	
 	public List<Book> searchByAuthorAndTitle(String text) {
-		String[] words = text.split(" ");
+		String[] words = text.split(" "); //$NON-NLS-1$
 		String sqlCommand;
 		Query q;
 		List<Book> qResult = new ArrayList<>();
@@ -59,6 +59,7 @@ public class BookDao extends AbstractDao<Book, Integer> {
 		
 		for (String word : words) {
 			sqlCommand = String.format("select b from %s b where b.%s like :p1 or b.%s like :p2", Book.TABLE_NAME, "author", "title");
+
 			q = this.getEntityManager().createQuery(sqlCommand);
 			q.setParameter("p1", "%"+word+"%");
 			q.setParameter("p2", "%"+word+"%");
