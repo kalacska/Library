@@ -19,8 +19,9 @@ public class BookDao extends AbstractDao<Book, Integer> {
 	}
 	
 	public List<Book> searchByAuthor(String name){
-		String sqlCommand = String.format("select b from %s b where b.%s='*%s*'", Book.TABLE_NAME, Book.AUTHOR, name); //$NON-NLS-1$
+		String sqlCommand = String.format("select b from %s b where b.%s like :author", Book.TABLE_NAME, "author"); //$NON-NLS-1$
 		Query q = this.getEntityManager().createQuery(sqlCommand);
+		q.setParameter("author","%"+name+"%");
 		
 		try{
 			List<Book> result = new ArrayList<>();
@@ -34,8 +35,9 @@ public class BookDao extends AbstractDao<Book, Integer> {
 	}
 	
 	public List<Book> searchByTitle(String title){
-		String sqlCommand=String.format("select b from %s b where b.%s='*%s*'",Book.TABLE_NAME,Book.TITLE,title); //$NON-NLS-1$
+		String sqlCommand=String.format("select b from %s b where b.%s like :title",Book.TABLE_NAME,"title"); //$NON-NLS-1$
 		Query q=this.getEntityManager().createQuery(sqlCommand);
+		q.setParameter("title", "%"+title+"%");
 		
 		try {
 			List<Book> result = new ArrayList<>();
@@ -56,8 +58,10 @@ public class BookDao extends AbstractDao<Book, Integer> {
 		List<Book> result = new ArrayList<>();
 		
 		for (String word : words) {
-			sqlCommand = String.format("select b from %s b where b.%s='*%s*' or b.%s='*%s*'", Book.TABLE_NAME, Book.AUTHOR, word, Book.TITLE, word);
+			sqlCommand = String.format("select b from %s b where b.%s like :p1 or b.%s like :p2", Book.TABLE_NAME, "author", "title");
 			q = this.getEntityManager().createQuery(sqlCommand);
+			q.setParameter("p1", "%"+word+"%");
+			q.setParameter("p2", "%"+word+"%");
 			
 			qResult.clear();
 			for (Object item : q.getResultList()) {

@@ -50,19 +50,19 @@ public class SearchServlet extends HttpServlet {
 		factory=Persistence.createEntityManagerFactory(Book.TABLE_NAME);
 		em=factory.createEntityManager();
 		bDao=new BookDao(em);
-		List<Book> books=null;
+		List<Book> books=new ArrayList<>();
 		PrintWriter writer=response.getWriter();
 		
 		String rBtnValue=request.getParameter("rBtn");
 		String text=request.getParameter("searchData");
 		
-		if(rBtnValue=="rbtnAuthor"){
+		if(rBtnValue.equals("rbtnAuthor")){
 			books=bDao.searchByAuthor(text);
 		}
-		if(rBtnValue=="rbtnTitle"){
+		if(rBtnValue.equals("rbtnTitle")){
 			books=bDao.searchByTitle(text);
 		}
-		if(rBtnValue=="rbtnNamePlusTitle"){
+		if(rBtnValue.equals("rbtnNamePlusTitle")){
 			 books=bDao.searchByAuthorAndTitle(text);
 		}
 		
