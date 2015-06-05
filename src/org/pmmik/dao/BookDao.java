@@ -33,7 +33,7 @@ public class BookDao extends AbstractDao<Book, Integer> {
 		}
 	}
 	
-	public List<Book> serchByTitle(String title){
+	public List<Book> searchByTitle(String title){
 		String sqlCommand=String.format("select b from %s b where b.%s='*%s*'",Book.TABLE_NAME,Book.TITLE,title); //$NON-NLS-1$
 		Query q=this.getEntityManager().createQuery(sqlCommand);
 		
@@ -46,6 +46,39 @@ public class BookDao extends AbstractDao<Book, Integer> {
 		} catch (Exception e) {
 			return null;
 		}
+	}
+	
+	public List<Book> searchByAuthorAndTitle(String text) {
+		String[] words = text.split(" ");
+		String sqlCommand;
+		Query q;
+		List<Book> qResult = new ArrayList<>();
+		List<Book> result = new ArrayList<>();
+		
+		for (String word : words) {
+			sqlCommand = String.format("select b from %s b where b.%s='*%s*' or b.%s='*%s*'", Book.TABLE_NAME, Book.AUTHOR, word, Book.TITLE, word);
+			q = this.getEntityManager().createQuery(sqlCommand);
+			
+			qResult.clear();
+			for (Object item : q.getResultList()) {
+				qResult.add((Book) item);
+			}
+			
+			if (result.isEmpty()) {
+				for (Book book : qResult) {
+					result.add(book);
+				}
+			}
+			else {
+				for (Book book : qResult) {
+					if (!result.contains(book)) {
+						result.remove(book);
+					}
+				}
+			}
+		}
+		
+		return result;
 	}
 	
 }
