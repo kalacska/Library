@@ -49,14 +49,14 @@ public class BookDao extends AbstractDao<Book, Integer> {
 	}
 	
 	public List<Book> searchByAuthorAndTitle(String text) {
-		String[] words = text.split(" ");
+		String[] words = text.split(" "); //$NON-NLS-1$
 		String sqlCommand;
 		Query q;
 		List<Book> qResult = new ArrayList<>();
 		List<Book> result = new ArrayList<>();
 		
 		for (String word : words) {
-			sqlCommand = String.format("select b from %s b where b.%s='*%s*' or b.%s='*%s*'", Book.TABLE_NAME, Book.AUTHOR, word, Book.TITLE, word);
+			sqlCommand = String.format("select b from %s b where b.%s='*%s*' or b.%s='*%s*'", Book.TABLE_NAME, Book.AUTHOR, word, Book.TITLE, word); //$NON-NLS-1$
 			q = this.getEntityManager().createQuery(sqlCommand);
 			
 			qResult.clear();
