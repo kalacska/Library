@@ -17,11 +17,20 @@
 			StringBuffer buffer = new StringBuffer();
 			for(Book book : books){
 				buffer.append("<tr>"); //$NON-NLS-1$
-				buffer.append("<td>"); //$NON-NLS-1$
+				buffer.append("<td align='center'>"); //$NON-NLS-1$
 				buffer.append(book.getAuthor());
 				buffer.append("</td>"); //$NON-NLS-1$
-				buffer.append("<td>"); //$NON-NLS-1$
+				buffer.append("<td align='center'>"); //$NON-NLS-1$
 				buffer.append(book.getTitle());
+				buffer.append("</td>"); //$NON-NLS-1$
+				buffer.append("<td align='center'>"); //$NON-NLS-1$
+				buffer.append(book.getIsbn());
+				buffer.append("</td>"); //$NON-NLS-1$
+				buffer.append("<td align='center'>"); //$NON-NLS-1$
+				buffer.append(book.isLoanable());
+				buffer.append("</td>"); //$NON-NLS-1$
+				buffer.append("<td align='center'>"); //$NON-NLS-1$
+				buffer.append(book.getAmount());
 				buffer.append("</td>"); //$NON-NLS-1$
 				buffer.append("</tr>");	//$NON-NLS-1$
 			}
@@ -30,23 +39,20 @@
 	%>
 
 	<form method="get" action="BookListerServlet">
-		<table cellSpacing=0 cellPadding=0 width="100%">
+	
+	<h1 align="center">Books</h1>
+		<table cellSpacing=0 cellPadding=0 width="100%" border="1" align="center">
 			<thead>
 				<tr>
-					<td noWrap align=left>Author</td>
-				</tr>
-				<tr>
-					<td noWrap align=left>Title</td> 					
+					<td align="center" style="background-color:#D1D1D1;"><span style="font-weight:bold; font-size:20px;">Author</span></td>
+					<td align="center" style="background-color:#D1D1D1;"><span style="font-weight:bold; font-size:20px;">Title</span></td> 			
+					<td align="center" style="background-color:#D1D1D1;"><span style="font-weight:bold; font-size:20px;">ISBN</span></td> 		
+					<td align="center" style="background-color:#D1D1D1;"><span style="font-weight:bold; font-size:20px;">Loanable</span></td> 
+					<td align="center" style="background-color:#D1D1D1;"><span style="font-weight:bold; font-size:20px;">Amount</span></td> 						
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>
-						<table>
 							<%=generateTable(books) %>
-					 	</table>
-					 </td>
-				</tr>
 			</tbody>
 		</table>
 	</form>
