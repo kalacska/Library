@@ -26,85 +26,70 @@ public class SearchServlet extends HttpServlet {
 	private EntityManager em;
 	private EntityManagerFactory factory;
 	private BookDao bDao;
+	private PrintWriter writer;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public SearchServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		factory=Persistence.createEntityManagerFactory(Book.TABLE_NAME);
-		em=factory.createEntityManager();
-		bDao=new BookDao(em);
+		this.factory=Persistence.createEntityManagerFactory(Book.TABLE_NAME);
+		this.em=this.factory.createEntityManager();
+		this.bDao=new BookDao(this.em);
 		List<Book> books=new ArrayList<>();
-		PrintWriter writer=response.getWriter();
+		this.writer = response.getWriter();
 		
-		String rBtnValue=request.getParameter("rBtn");
-		String text=request.getParameter("searchData");
+		String rBtnValue=request.getParameter("rBtn"); //$NON-NLS-1$
+		String text=request.getParameter("searchData"); //$NON-NLS-1$
 		
-		if(rBtnValue.equals("rbtnAuthor")){
-			books=bDao.searchByAuthor(text);
+		if(rBtnValue.equals("rbtnAuthor")){ //$NON-NLS-1$
+			books=this.bDao.searchByAuthor(text);
 		}
-		if(rBtnValue.equals("rbtnTitle")){
-			books=bDao.searchByTitle(text);
+		if(rBtnValue.equals("rbtnTitle")){ //$NON-NLS-1$
+			books=this.bDao.searchByTitle(text);
 		}
-		if(rBtnValue.equals("rbtnNamePlusTitle")){
-			 books=bDao.searchByAuthorAndTitle(text);
+		if(rBtnValue.equals("rbtnNamePlusTitle")){ //$NON-NLS-1$
+			 books=this.bDao.searchByAuthorAndTitle(text);
 		}
 		
+		String htmlMessage="<!DOCTYPE html>"+ //$NON-NLS-1$
+					   "<html>"+ //$NON-NLS-1$
+					   "<head>"+ //$NON-NLS-1$
+					   "	<title>Search result</title>"+ //$NON-NLS-1$
+					   "</head>"+ //$NON-NLS-1$
+					   "<body>"; //$NON-NLS-1$
 		
 		if(books.isEmpty()){
-			String htmlMessage="<!DOCTYPE html>"+
-					   "<html>"+
-					   "<head>"+
-					   "	<title>Result</title>"+
-					   "</head>"+
-					   "<body>"+
-					   "<p align='center'>No result!</p>"+
-					   "<p align='center'><a href='\\index.html'>Return Home</p><br><br>"+
-					   "</body>"+
-					   "</html>";
-			writer.print(htmlMessage);
+			htmlMessage += "<p align='center'>No result!</p>"; //$NON-NLS-1$
 		}
 		else{
 			
-			String htmlMessage="<!DOCTYPE html>"+
-							   "<html>"+
-							   "<head>"+
-							   "	<title>Result</title>"+
-							   "</head>"+
-							   "<body>"+
-							   "<h1 align='center' style='color:red;'>Search Result</h1>"+
-							   "	<table align='center' border='1'>"+
-							   "		<tr><td><b>Author</b></td><td><b>Title</b></td><td><b>ISBN</b></td><td><b>Loanable</b></td><td><b>Amount</b></td></tr>";
+			htmlMessage +=
+						"<h1 align='center' style='color:red;'>Search Result</h1>"+ //$NON-NLS-1$
+						"	<table align='center' border='1'>"+ //$NON-NLS-1$
+						"		<tr><td><b>Author</b></td><td><b>Title</b></td><td><b>ISBN</b></td><td><b>Loanable</b></td><td><b>Amount</b></td></tr>"; //$NON-NLS-1$
 							   
 				for (Book book : books) {
-					htmlMessage+="<tr><td>"+book.getAuthor()+"</td><td>"+book.getTitle()+"</td><td>"+
-				                 book.getIsbn()+"</td><td>"+book.isLoanable()+"</td><td>"+book.getAmount()+"</td>";
+					htmlMessage+="<tr><td>"+book.getAuthor()+"</td><td>"+book.getTitle()+"</td><td>"+ //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				                 book.getIsbn()+"</td><td>"+book.isLoanable()+"</td><td>"+book.getAmount()+"</td>"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				}
 			
-							   htmlMessage+="	</table>"+
-							   "<p align='center'><a href='\\index.html'>Return Home</p>"+
-							   "<p align='center'><a href='\\search.jsp'>Return Search</p><br><br>"+
-							   "</body>"+
-							   "</html>";
-			
-			writer.print(htmlMessage);
+			htmlMessage+="	</table>"; //$NON-NLS-1$
 		}
+		htmlMessage +=
+					"<p align='center'><a href='\\search.jsp'>Back to Search</p><br><br>"+ //$NON-NLS-1$
+					"<p align='center'><a href='\\index.html'>Return Home</p>"+ //$NON-NLS-1$
+					"</body>"+ //$NON-NLS-1$
+					"</html>"; //$NON-NLS-1$
+		
+		this.writer.print(htmlMessage);
 	}
 
 }
