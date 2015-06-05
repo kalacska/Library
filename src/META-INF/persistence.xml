@@ -5,6 +5,8 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
 
+		<class>org.pmmik.pojo.Book</class>
+		
 		<properties>
 
 			<property name="javax.persistence.schema-generation.database.action"
@@ -17,7 +19,7 @@
 
 			<property name="eclipselink.target-database" value="Derby" />
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:derby:simpleDB;create=true" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby:libraryDB;create=true" />
 			<property name="javax.persistence.jdbc.password" value="test" />
 			<property name="javax.persistence.jdbc.user" value="test" />
 

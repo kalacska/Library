@@ -12,7 +12,6 @@ public class BookDao extends AbstractDao<Book, Integer> {
 
 	public BookDao(EntityManager entityManager) {
 		super(entityManager);
-		// TODO Auto-generated constructor stub
 	}
 
 	public List<Book> listAllBooks() {

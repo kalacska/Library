@@ -15,9 +15,9 @@ public abstract class PersistentObject implements Serializable {
 	public final static String ID = "id"; //$NON-NLS-1$
 	
 	@Id	
-	@Column(name=ID, updatable = false, unique = true, nullable = false)
+	@Column(name=PersistentObject.ID)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;	
+	private int id;	
 
 	/**
 	 * 
