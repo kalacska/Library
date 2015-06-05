@@ -8,5 +8,18 @@
 </head>
 <body>
 	<h1 align="center" style="color:red;">Search</h1>
+	
+	<form action="SearchServlet" name="searchForm" method="post">
+		<table border="1" align="center">
+			<tr>
+				<td>By Author <input type="radio" name="rBtn" value="rbtnAuthor" /><br>By Title <input type="radio" name="rBtn" value="rbtnTitle" /><br>By Author+Title <input type="radio" name="rBtn" checked="checked" value="rbtnNamePlusTitle" /></td>
+				<td align="left">Search text: <br> <input type="text" name="searchData" /></td>
+			</tr>
+		    <tr>
+				<td colspan="3" align="center"><input type="submit" name="submit" value="Search"></td>
+			</tr>
+		</table>
+	</form>
+	
 </body>
 </html>
