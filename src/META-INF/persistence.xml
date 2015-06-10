@@ -19,7 +19,7 @@
 
 			<property name="eclipselink.target-database" value="Derby" />
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:derby:libraryDB;create=true" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby:libraryDB;create=true;territory=hu_HU;collation=TERRITORY_BASED" />
 			<property name="javax.persistence.jdbc.password" value="test" />
 			<property name="javax.persistence.jdbc.user" value="test" />
 
