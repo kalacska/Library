@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+div#header{
+	background:linear-gradient(#9BC7EC,#E7F4FF);
+	width:500px;
+	height:50px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	margin: 30px auto 0px;
+}
+
+div#menu{
+	background:#E7F4FF;
+	width:500px;
+	height:30px;
+	margin: 0px auto;
+}
+
+div#container{
+	background:linear-gradient(#E7F4FF,#F7F7F7);
+	width:500px;
+	height:500px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	margin: 0px auto;
+}

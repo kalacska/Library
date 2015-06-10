@@ -84,6 +84,7 @@ public class InsertServlet extends HttpServlet {
 					   "<html>"+
 					   "<head>"+
 					   "	<title>Insert</title>"+
+					   "	<meta charset='UTF-8'>"+
 					   "</head>"+
 					   "<body>"+
 					   "<p align='center'>Succesfull!</p>"+
