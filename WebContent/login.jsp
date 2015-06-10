@@ -10,10 +10,10 @@
 <form action="LoginServlet" method="post">
 	<table align='center' border='1'>
 		<tr>
-			<td>Name:</td><td><input type='text' name='name'/></td>
+			<td>Name:</td><td><input type='text' name='name' required/></td>
 		</tr>
 		<tr>
-			<td>Password:</td><td><input type='password' name='password'/></td>
+			<td>Password:</td><td><input type='password' name='password' required/></td>
 		</tr>
 		<tr>
 			<td colspan='2' align='center'><input type='submit' name='submit' value='Login'/></td>

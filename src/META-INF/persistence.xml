@@ -6,6 +6,7 @@
 
 
 		<class>org.pmmik.pojo.Book</class>
+		<class>org.pmmik.pojo.User</class>
 		
 		<properties>
 
@@ -16,6 +17,7 @@
 				value="create"/> -->
 
 			<property name="javax.persistence.sql-load-script-source" value="META-INF/sql/insert_books.sql" />
+			<property name="javax.persistence.sql-load-script-source" value="META-INF/sql/insert_user.sql" />
 
 			<property name="eclipselink.target-database" value="Derby" />
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" />
