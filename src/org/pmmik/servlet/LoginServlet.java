@@ -21,7 +21,7 @@ import org.pmmik.pojo.User;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static final String PERSISTENCE_UNIT_NAME = User.TABLE_NAME;
+	private static final String PERSISTENCE_UNIT_NAME = "books";
 	private EntityManager em;
 	private EntityManagerFactory factory;
 	private UserDao userDao;

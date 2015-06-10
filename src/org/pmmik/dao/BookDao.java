@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.pmmik.pojo.Book;
+import org.pmmik.pojo.User;
 
 public class BookDao extends AbstractDao<Book, Integer> {
 

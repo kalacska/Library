@@ -1,1 +1,1 @@
-insert into APP.users (name, password) values('admin', 'admin')
+insert into APP.users (username, password) values('admin', 'admin')
