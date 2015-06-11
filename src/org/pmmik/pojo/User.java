@@ -12,7 +12,7 @@ public class User extends PersistentObject {
 	public final static String USERNAME = "username"; //$NON-NLS-1$
 	public final static String PASSWORD = "password"; //$NON-NLS-1$
 	
-	@Column(name=USERNAME, nullable=false)
+	@Column(name=USERNAME, nullable=false, unique=true)
 	private String username;
 	@Column(name=PASSWORD, nullable=false)
 	private String password;

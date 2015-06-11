@@ -1,4 +1,4 @@
-package test.org.pmmik.dao;
+package org.pmmik.dao;
 
 import static org.junit.Assert.*;
 
@@ -15,11 +15,11 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.pmmik.dao.BookDao;
+import org.pmmik.dao.Globals;
 import org.pmmik.pojo.Book;
 
 public class BookDaoTest {
 	
-	private static final String PESISTENCE_UNIT_NAME = Book.TABLE_NAME;
 	private EntityManagerFactory emFactory;
 	private EntityManager em;
 	private BookDao bookDao;
@@ -27,7 +27,7 @@ public class BookDaoTest {
 
 	@Before
 	public void setUp() throws Exception {
-		this.emFactory = Persistence.createEntityManagerFactory(PESISTENCE_UNIT_NAME);
+		this.emFactory = Persistence.createEntityManagerFactory(Globals.PERSISTENCE_UNIT_NAME);
 		this.em = this.emFactory.createEntityManager();
 		this.bookDao = new BookDao(this.em);
 		
@@ -59,6 +59,7 @@ public class BookDaoTest {
 		fail("Not yet implemented"); //$NON-NLS-1$
 	}
 
+	@Ignore
 	@Test
 	public void testSearchByAuthor() {
 		Query q = this.em.createQuery("select b from " + Book.TABLE_NAME + " b where b.id=2"); //$NON-NLS-1$ //$NON-NLS-2$

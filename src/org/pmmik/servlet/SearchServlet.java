@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.pmmik.dao.BookDao;
+import org.pmmik.dao.Globals;
 import org.pmmik.pojo.Book;
 
 /**
@@ -40,7 +41,7 @@ public class SearchServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.factory=Persistence.createEntityManagerFactory(Book.TABLE_NAME);
+		this.factory=Persistence.createEntityManagerFactory(Globals.PERSISTENCE_UNIT_NAME);
 		this.em=this.factory.createEntityManager();
 		this.bDao=new BookDao(this.em);
 		List<Book> books=new ArrayList<>();
