@@ -12,17 +12,17 @@
 <meta charset="ISO-8859-2">
 <title>List of all books</title>
 </head>
-<body>
+<body bgcolor="#C6EAFF">
 	<%!	private String generateTable(Vector<Book> books){
 			StringBuffer buffer = new StringBuffer();
 			for(Book book : books){
 				buffer.append("<tr>"); //$NON-NLS-1$
-				buffer.append("<td align='center'>"); //$NON-NLS-1$
+				buffer.append("<td align='center'><b>"); //$NON-NLS-1$
 				buffer.append(book.getAuthor());
-				buffer.append("</td>"); //$NON-NLS-1$
-				buffer.append("<td align='center'>"); //$NON-NLS-1$
+				buffer.append("</b></td>"); //$NON-NLS-1$
+				buffer.append("<td align='center'><b>"); //$NON-NLS-1$
 				buffer.append(book.getTitle());
-				buffer.append("</td>"); //$NON-NLS-1$
+				buffer.append("</b></td>"); //$NON-NLS-1$
 				buffer.append("<td align='center'>"); //$NON-NLS-1$
 				buffer.append(book.getIsbn());
 				buffer.append("</td>"); //$NON-NLS-1$
@@ -41,14 +41,14 @@
 	<form method="get" action="BookListerServlet" accept-charset="ISO-8859-2">
 	
 	<h1 align="center">Books</h1>
-		<table cellSpacing=0 cellPadding=0 width="100%" border="1" align="center">
+		<table cellSpacing=0 cellPadding=0 width="80%" border="1" align="center" bgcolor="#EDF2F4">
 			<thead>
 				<tr>
-					<td align="center" style="background-color:#D1D1D1;"><span style="font-weight:bold; font-size:20px;">Author</span></td>
-					<td align="center" style="background-color:#D1D1D1;"><span style="font-weight:bold; font-size:20px;">Title</span></td> 			
-					<td align="center" style="background-color:#D1D1D1;"><span style="font-weight:bold; font-size:20px;">ISBN</span></td> 		
-					<td align="center" style="background-color:#D1D1D1;"><span style="font-weight:bold; font-size:20px;">Loanable</span></td> 
-					<td align="center" style="background-color:#D1D1D1;"><span style="font-weight:bold; font-size:20px;">Amount</span></td> 						
+					<td align="center" style="background-color:#ACADAD;"><span style="font-weight:bold; font-size:20px; font-weight:bold;">Author</span></td>
+					<td align="center" style="background-color:#ACADAD;"><span style="font-weight:bold; font-size:20px; font-weight:bold;">Title</span></td> 			
+					<td align="center" style="background-color:#ACADAD;"><span style="font-weight:bold; font-size:20px; font-weight:bold;">ISBN</span></td> 		
+					<td align="center" style="background-color:#ACADAD;"><span style="font-weight:bold; font-size:20px; font-weight:bold;">Loanable</span></td> 
+					<td align="center" style="background-color:#ACADAD;"><span style="font-weight:bold; font-size:20px; font-weight:bold;">Amount</span></td> 						
 				</tr>
 			</thead>
 			<tbody>
@@ -56,6 +56,8 @@
 			</tbody>
 		</table>
 	</form>
+	
+	<p align='center'><a href='index.jsp'>Return Home</p>
 
 </body>
 </html>

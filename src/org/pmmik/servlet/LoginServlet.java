@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.pmmik.dao.Globals;
 import org.pmmik.dao.UserDao;
@@ -42,7 +43,9 @@ public class LoginServlet extends HttpServlet {
 		this.userDao = new UserDao(this.em);
 		
 		if (this.userDao.login(request.getParameter("name"), request.getParameter("password"))) { //$NON-NLS-1$ //$NON-NLS-2$
-			response.sendRedirect("admin.html"); //$NON-NLS-1$
+			HttpSession session=request.getSession();
+			session.setAttribute("admin", true);
+			response.sendRedirect("admin.jsp"); //$NON-NLS-1$
 		}
 		else {
 			response.sendRedirect("loginerror.html"); //$NON-NLS-1$

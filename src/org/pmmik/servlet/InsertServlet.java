@@ -83,9 +83,10 @@ public class InsertServlet extends HttpServlet {
 					   "	<title>Insert</title>"+ //$NON-NLS-1$
 					   "	<meta charset='UTF-8'>"+ //$NON-NLS-1$
 					   "</head>"+ //$NON-NLS-1$
-					   "<body>"+ //$NON-NLS-1$
-					   "<p align='center'>Succesfull!</p>"+ //$NON-NLS-1$
-					   "<p align='center'><a href='\\index.html'>Return Home</p><br><br>"+ //$NON-NLS-1$
+					   "<body bgcolor='#C6EAFF'>"+ //$NON-NLS-1$
+					   "<h1 align='center'>Succesfull!</h1>"+ //$NON-NLS-1$
+					   "<p align='center'><a href='\\insert.jsp'>Insert Other One</p>"+
+					   "<p align='center'><a href='\\admin.jsp'>Return Home</p><br><br>"+ //$NON-NLS-1$
 					   "</body>"+ //$NON-NLS-1$
 					   "</html>"; //$NON-NLS-1$
 			this.writer.print(htmlMessage);

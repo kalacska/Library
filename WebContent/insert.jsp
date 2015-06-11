@@ -2,30 +2,35 @@
     pageEncoding="ISO-8859-2"%>
 <%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>--%>
+<% if(session.getAttribute("admin")==null)
+	{
+		response.sendRedirect("loginerror.html");
+	}
+	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-2">
 <title>Insert title here</title>
 </head>
-<body>
+<body bgcolor="#C6EAFF">
 	<h1 align="center">Insert</h1>
 	<form action="InsertServlet" method="post" accept-charset="ISO-8859-2">
-	<table border="1" align="center">
+	<table border="1" align="center" bgcolor='#9CCCE8'>
 		<tr>
-			<td>Author:</td>
+			<td><b>Author:</b></td>
 			<td><input type="text" name="bookAuthor" required/></td>
 		</tr>
 		<tr>
-			<td>Title:</td>
+			<td><b>Title:</b></td>
 			<td><input type="text" name="bookTitle" required/></td>
 		</tr>
 		<tr>
-			<td>ISBN:</td>
+			<td><b>ISBN:</b></td>
 			<td><input type="text" name="bookIsbn" required/></td>
 		</tr>
 		<tr>
-			<td>Loanable:</td>
+			<td><b>Loanable:</b></td>
 			<td align="center">
 				<select name="bookLoanable" required>
 					<option value="yes">Yes</option>
@@ -34,7 +39,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>Amount:</td>
+			<td><b>Amount:</b></td>
 			<td><input type="text" name="bookAmount" required/></td>
 		</tr>
 		<tr>
