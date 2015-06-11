@@ -48,6 +48,9 @@ public class InsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
+			request.setCharacterEncoding("ISO-8859-2");
+			response.setContentType("ISO-8859-2");
+			
 			factory=Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 			em=factory.createEntityManager();
 			dao=new BookDao(em);

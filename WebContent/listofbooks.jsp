@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-2"
+    pageEncoding="ISO-8859-2"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <jsp:useBean id="books" scope="session" class="java.util.Vector" />
@@ -9,7 +9,7 @@
 
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-2">
 <title>List of all books</title>
 </head>
 <body>
@@ -38,7 +38,7 @@
 		}
 	%>
 
-	<form method="get" action="BookListerServlet">
+	<form method="get" action="BookListerServlet" accept-charset="ISO-8859-2">
 	
 	<h1 align="center">Books</h1>
 		<table cellSpacing=0 cellPadding=0 width="100%" border="1" align="center">

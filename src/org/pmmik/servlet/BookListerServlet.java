@@ -54,6 +54,9 @@ public class BookListerServlet extends HttpServlet {
 
 	private void action(HttpServletRequest request, HttpServletResponse response) {
 		try {
+			request.setCharacterEncoding("ISO-8859-2");
+			response.setContentType("ISO-8859-2");
+			
 			factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 			this.em = factory.createEntityManager();
 
