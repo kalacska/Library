@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.pmmik.dao.BookDao;
+import org.pmmik.dao.Globals;
 import org.pmmik.pojo.Book;
 
 /**
@@ -23,7 +24,6 @@ import org.pmmik.pojo.Book;
 public class BookListerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static final String PERSISTENCE_UNIT_NAME = "books"; //$NON-NLS-1$
 	private static EntityManagerFactory factory;
 	private EntityManager em;
 	
@@ -54,7 +54,7 @@ public class BookListerServlet extends HttpServlet {
 
 	private void action(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+			factory = Persistence.createEntityManagerFactory(Globals.PERSISTENCE_UNIT_NAME);
 			this.em = factory.createEntityManager();
 
 			this.bookDao = new BookDao(this.em);

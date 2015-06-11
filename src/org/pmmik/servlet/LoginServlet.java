@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.pmmik.dao.Globals;
 import org.pmmik.dao.UserDao;
-import org.pmmik.pojo.User;
 
 /**
  * Servlet implementation class LoginServlet
@@ -21,7 +21,6 @@ import org.pmmik.pojo.User;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static final String PERSISTENCE_UNIT_NAME = "books";
 	private EntityManager em;
 	private EntityManagerFactory factory;
 	private UserDao userDao;
@@ -38,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		this.factory = Persistence.createEntityManagerFactory(Globals.PERSISTENCE_UNIT_NAME);
 		this.em = this.factory.createEntityManager();
 		this.userDao = new UserDao(this.em);
 		
