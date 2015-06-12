@@ -86,4 +86,13 @@ public class BookDao extends AbstractDao<Book, Integer> {
 		return result;
 	}
 	
+	public Book selectById(String isbn){
+		String sqlCommand=String.format("select b from %s b where b.%s= :isbn",Book.TABLE_NAME,"isbn"); //$NON-NLS-1$ //$NON-NLS-2$
+		Query q=this.getEntityManager().createQuery(sqlCommand);
+		q.setParameter("isbn", isbn); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		System.out.println(sqlCommand);
+		Book book = (Book)q.getSingleResult();
+		return book;
+	}
+	
 }

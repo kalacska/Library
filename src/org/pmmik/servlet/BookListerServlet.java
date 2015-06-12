@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+//import org.eclipse.jetty.server.session.JDBCSessionManager.Session;
 import org.pmmik.dao.BookDao;
 import org.pmmik.dao.Globals;
 import org.pmmik.pojo.Book;
@@ -28,6 +29,7 @@ public class BookListerServlet extends HttpServlet {
 	private EntityManager em;
 	
 	private BookDao bookDao;
+	private String page;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -67,7 +69,13 @@ public class BookListerServlet extends HttpServlet {
 				books = this.bookDao.listAllBooks();
 				request.getSession().setAttribute("books", books); //$NON-NLS-1$
 
-				String page = "/listofbooks.jsp"; //$NON-NLS-1$
+				if(request.getSession().getAttribute("admin")==null){
+					 page = "/listofbooks.jsp"; //$NON-NLS-1$
+				}
+				else{
+					 page="/adminlistofbooks.jsp"; //$NON-NLS-1$
+				}
+				
 
 				RequestDispatcher disp = request.getRequestDispatcher(page);
 				disp.forward(request, response);

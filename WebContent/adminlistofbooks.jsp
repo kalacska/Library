@@ -1,6 +1,11 @@
 <%@page import="java.nio.channels.SeekableByteChannel"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-2"
     pageEncoding="ISO-8859-2"%>
+<% if(session.getAttribute("admin")==null)
+	{
+		response.sendRedirect("loginerror.html");
+	}
+	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <jsp:useBean id="books" scope="session" class="java.util.Vector" />
@@ -34,13 +39,16 @@
 				buffer.append("<td align='center'>"); //$NON-NLS-1$
 				buffer.append(book.getAmount());
 				buffer.append("</td>"); //$NON-NLS-1$
+				buffer.append("<td align='center'>"); //$NON-NLS-1$
+				buffer.append("<input type='checkbox' name='deleteCB' value="+book.getIsbn()+"/>");
+				buffer.append("</td>"); //$NON-NLS-1$
 				buffer.append("</tr>");	//$NON-NLS-1$
 			}
 		return buffer.toString();
 		}
 	%>
 
-	<form method="get" action="BookListerServlet" accept-charset="ISO-8859-2">
+	<form method="post" action="DeleteServlet" accept-charset="ISO-8859-2">
 	
 	<h1 align="center">Books</h1>
 		<table cellSpacing=0 cellPadding=0 width="80%" align="center" bgcolor="#EDF2F4">
@@ -50,16 +58,19 @@
 					<th align="center"><span style="font-weight:bold; font-size:20px;">Title</span></th> 			
 					<th align="center"><span style="font-weight:bold; font-size:20px;">ISBN</span></th> 		
 					<th align="center"><span style="font-weight:bold; font-size:20px;">Loanable</span></th> 
-					<th align="center"><span style="font-weight:bold; font-size:20px;">Amount</span></th> 						
+					<th align="center"><span style="font-weight:bold; font-size:20px;">Amount</span></th> 		
+					<th align="center"><span style="font-weight:bold; font-size:20px;">Delete</span></th> 				
 				</tr>
 			</thead>
 			<tbody>
 							<%=generateTable(books) %>
 			</tbody>
 		</table>
+		<br>
+		<div align="center"><input type="submit" name="submit" value="Delete"/></div>
 	</form>
 	
-	<p align='center'><a href='index.jsp'>Return Home</a></p>
+	<p align='center'><a href='admin.jsp'>Return Home</a></p>
 
 </body>
 </html>
