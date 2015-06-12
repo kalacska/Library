@@ -11,6 +11,7 @@
 <head>
 <meta charset="ISO-8859-2">
 <title>List of all books</title>
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body bgcolor="#C6EAFF">
 	<%!	private String generateTable(Vector<Book> books){
@@ -41,14 +42,14 @@
 	<form method="get" action="BookListerServlet" accept-charset="ISO-8859-2">
 	
 	<h1 align="center">Books</h1>
-		<table cellSpacing=0 cellPadding=0 width="80%" border="1" align="center" bgcolor="#EDF2F4">
+		<table cellSpacing=0 cellPadding=0 width="80%" align="center" bgcolor="#EDF2F4">
 			<thead>
 				<tr>
-					<td align="center" style="background-color:#ACADAD;"><span style="font-weight:bold; font-size:20px; font-weight:bold;">Author</span></td>
-					<td align="center" style="background-color:#ACADAD;"><span style="font-weight:bold; font-size:20px; font-weight:bold;">Title</span></td> 			
-					<td align="center" style="background-color:#ACADAD;"><span style="font-weight:bold; font-size:20px; font-weight:bold;">ISBN</span></td> 		
-					<td align="center" style="background-color:#ACADAD;"><span style="font-weight:bold; font-size:20px; font-weight:bold;">Loanable</span></td> 
-					<td align="center" style="background-color:#ACADAD;"><span style="font-weight:bold; font-size:20px; font-weight:bold;">Amount</span></td> 						
+					<th align="center"><span style="font-weight:bold; font-size:20px;">Author</span></td>
+					<th align="center"><span style="font-weight:bold; font-size:20px;">Title</span></td> 			
+					<th align="center"><span style="font-weight:bold; font-size:20px;">ISBN</span></td> 		
+					<th align="center"><span style="font-weight:bold; font-size:20px;">Loanable</span></td> 
+					<th align="center"><span style="font-weight:bold; font-size:20px;">Amount</span></td> 						
 				</tr>
 			</thead>
 			<tbody>

@@ -64,6 +64,7 @@ public class SearchServlet extends HttpServlet {
 					   "<html>"+ //$NON-NLS-1$
 					   "<head>"+ //$NON-NLS-1$
 					   "	<title>Search result</title>"+ //$NON-NLS-1$
+					   "	<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">" + //$NON-NLS-1$
 					   "</head>"+ //$NON-NLS-1$
 					   "<body bgcolor='#C6EAFF'>"; //$NON-NLS-1$
 		
@@ -74,8 +75,8 @@ public class SearchServlet extends HttpServlet {
 			
 			htmlMessage +=
 						"<h1 align='center'>Search Result</h1>"+ //$NON-NLS-1$
-						"	<table align='center' border='1' bgcolor='#EDF2F4'>"+ //$NON-NLS-1$
-						"		<tr><td style='background-color:#ACADAD;'><b>Author</b></td><td style='background-color:#ACADAD;'><b>Title</b></td><td style='background-color:#ACADAD;'><b>ISBN</b></td><td style='background-color:#ACADAD;'><b>Loanable</b></td><td style='background-color:#ACADAD;'><b>Amount</b></td></tr>"; //$NON-NLS-1$
+						"	<table align='center'"+ //$NON-NLS-1$
+						"		<tr><th><b>Author</b></th><th><b>Title</b></th><th><b>ISBN</b></th><th><b>Loanable</b></th><th><b>Amount</b></th></tr>"; //$NON-NLS-1$
 							   
 				for (Book book : books) {
 					htmlMessage+="<tr><td>"+book.getAuthor()+"</td><td>"+book.getTitle()+"</td><td>"+ //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$

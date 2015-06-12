@@ -73,3 +73,19 @@ div#container{
 	height:460px;
 	margin: 0px auto;
 }
+
+table {
+	box-shadow: 1px 1px 5px #5FBCF1;
+}
+
+th {
+	background: #5FBCF1;
+}
+
+tr:nth-child(odd) {
+	background: #c1e8ff;
+}
+
+tr:nth-child(even) {
+	background: #b0e1ff;
+}
