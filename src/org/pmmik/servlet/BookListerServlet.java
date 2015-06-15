@@ -13,10 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
 //import org.eclipse.jetty.server.session.JDBCSessionManager.Session;
 import org.pmmik.dao.BookDao;
 import org.pmmik.dao.Globals;
 import org.pmmik.pojo.Book;
+import org.pmmik.xml.XMLCreator;
 
 /**
  * Servlet implementation class BookListerServlet
@@ -56,6 +59,7 @@ public class BookListerServlet extends HttpServlet {
 
 	private void action(HttpServletRequest request, HttpServletResponse response) {
 		try {
+			
 			request.setCharacterEncoding("ISO-8859-2");
 			response.setContentType("ISO-8859-2");
 

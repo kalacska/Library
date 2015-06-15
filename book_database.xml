@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Books>
+    <Book>
+        <Author>Patrick Naughton</Author>
+        <Title>The Java Handbook</Title>
+        <ISBN>0-07-882199-1</ISBN>
+        <Amount>3</Amount>
+    </Book>
+    <Book>
+        <Author>Robert C. Martin</Author>
+        <Title>Clean Code</Title>
+        <ISBN>978-0132350884</ISBN>
+        <Amount>2</Amount>
+    </Book>
+</Books>

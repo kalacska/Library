@@ -67,7 +67,9 @@
 			</tbody>
 		</table>
 		<br>
-		<div align="center"><input type="submit" name="submit" value="Delete"/></div>
+		<div align="center">
+			<input type="submit" name="submit" value="Delete"/>
+		</div>
 	</form>
 	
 	<p align='center'><a href='admin.jsp'>Return Home</a></p>

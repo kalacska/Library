@@ -11,7 +11,7 @@
 <body>
 	<div id="box">
 		<div id="header">
-			<h1 align="center">Library Services</h1>
+			<h1 align="center">Library Services</h1>	
 		</div>
 		<div id="menu" align="center">
 			<div id="link"><a href='BookListerServlet'>List of books</a></div><div id="link"><a href='search.jsp'>Search</a></div><div id="link"><a href='login.jsp'>Login</a></div>

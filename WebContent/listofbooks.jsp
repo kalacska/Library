@@ -59,6 +59,13 @@
 		</table>
 	</form>
 	
+	<form action="XMLServlet" method="post">
+		<p align="center">
+			<span><b>E-mail: </b></span><input type="text" name="email" required/>
+			<input type="submit" name="submit" value="Make XML Database"/>
+		</p>
+	</form>
+	
 	<p align='center'><a href='index.jsp'>Return Home</a></p>
 
 </body>
