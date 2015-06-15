@@ -19,9 +19,9 @@ public class BookDao extends AbstractDao<Book, Integer> {
 	}
 	
 	public List<Book> searchByAuthor(String name){
-		String sqlCommand = String.format("select b from %s b where b.%s like :author", Book.TABLE_NAME, "author"); //$NON-NLS-1$ //$NON-NLS-2$
+		String sqlCommand = String.format("select b from %s b where upper(b.%s) like :author", Book.TABLE_NAME, "author"); //$NON-NLS-1$ //$NON-NLS-2$
 		Query q = this.getEntityManager().createQuery(sqlCommand);
-		q.setParameter("author","%"+name+"%"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		q.setParameter("author","%"+name.toUpperCase()+"%"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		
 		try{
 			List<Book> result = new ArrayList<>();
@@ -35,9 +35,9 @@ public class BookDao extends AbstractDao<Book, Integer> {
 	}
 	
 	public List<Book> searchByTitle(String title){
-		String sqlCommand=String.format("select b from %s b where b.%s like :title",Book.TABLE_NAME,"title"); //$NON-NLS-1$ //$NON-NLS-2$
+		String sqlCommand=String.format("select b from %s b where upper(b.%s) like :title",Book.TABLE_NAME,"title"); //$NON-NLS-1$ //$NON-NLS-2$
 		Query q=this.getEntityManager().createQuery(sqlCommand);
-		q.setParameter("title", "%"+title+"%"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		q.setParameter("title", "%"+title.toUpperCase()+"%"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		
 		try {
 			List<Book> result = new ArrayList<>();
@@ -58,11 +58,11 @@ public class BookDao extends AbstractDao<Book, Integer> {
 		List<Book> result = new ArrayList<>();
 		
 		for (String word : words) {
-			sqlCommand = String.format("select b from %s b where b.%s like :p1 or b.%s like :p2", Book.TABLE_NAME, "author", "title"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			sqlCommand = String.format("select b from %s b where upper(b.%s) like :p1 or upper(b.%s) like :p2", Book.TABLE_NAME, "author", "title"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
 			q = this.getEntityManager().createQuery(sqlCommand);
-			q.setParameter("p1", "%"+word+"%"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			q.setParameter("p2", "%"+word+"%"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			q.setParameter("p1", "%"+word.toUpperCase()+"%"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			q.setParameter("p2", "%"+word.toUpperCase()+"%"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			
 			qResult.clear();
 			for (Object item : q.getResultList()) {
