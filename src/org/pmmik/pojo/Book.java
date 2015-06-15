@@ -84,5 +84,50 @@ public class Book extends PersistentObject {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + amount;
+		result = prime * result + ((author == null) ? 0 : author.hashCode());
+		result = prime * result + ((isbn == null) ? 0 : isbn.hashCode());
+		result = prime * result + (loanable ? 1231 : 1237);
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Book other = (Book) obj;
+		if (amount != other.amount)
+			return false;
+		if (author == null) {
+			if (other.author != null)
+				return false;
+		} else if (!author.equals(other.author))
+			return false;
+		if (isbn == null) {
+			if (other.isbn != null)
+				return false;
+		} else if (!isbn.equals(other.isbn))
+			return false;
+		if (loanable != other.loanable)
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
+	}
+	
+	
 	
 }

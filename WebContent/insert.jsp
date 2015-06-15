@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-2"
     pageEncoding="ISO-8859-2"%>
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>--%>
 <% if(session.getAttribute("admin")==null)
 	{
 		response.sendRedirect("loginerror.html");
@@ -46,6 +44,7 @@
 			<td colspan="2" align="center"><input type="submit" value="Insert"/></td>
 		</tr>
 	</table>
+	<p align="center"><a href="admin.jsp">Return Home</a></p>
 	</form>
 </body>
 </html>

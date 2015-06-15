@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.validation.constraints.AssertTrue;
 
 import org.junit.After;
 import org.junit.Before;
@@ -32,52 +33,52 @@ public class BookDaoTest {
 		this.bookDao = new BookDao(this.em);
 		
 		Book book1 = new Book();
-		book1.setAuthor("Sir Arthur Conan Doyle"); //$NON-NLS-1$
-		book1.setTitle("The Adventures of Sherlock Holmes"); //$NON-NLS-1$
+		book1.setAuthor("Patrick Naughton"); //$NON-NLS-1$
+		book1.setTitle("The Java Handbook"); //$NON-NLS-1$
+		book1.setAmount(3);
+		book1.setIsbn("0-07-882199-1");
+		book1.setLoanable(true);
 		this.books.add(book1);
 		
 		Book book2 = new Book();
-		book2.setAuthor("Sir Arthur Conan Doyle"); //$NON-NLS-1$
-		book2.setTitle("The Lost World"); //$NON-NLS-1$
+		book2.setAuthor("Robert C. Martin"); //$NON-NLS-1$
+		book2.setTitle("Clean Code"); //$NON-NLS-1$
+		book2.setAmount(2);
+		book2.setIsbn("978-0132350884");
+		book2.setLoanable(true);
 		this.books.add(book2);
 	}
 
-	@After
-	public void tearDown() throws Exception {
-		this.em = this.emFactory.createEntityManager();
-		this.em.getTransaction().begin();
-		
-		Query q = this.em.createQuery("delete from " + Book.TABLE_NAME); //$NON-NLS-1$
-		q.executeUpdate();
-		this.em.getTransaction().commit();
-		this.em.close();
-	}
-
-	@Ignore
 	@Test
 	public void testListAllBooks() {
-		fail("Not yet implemented"); //$NON-NLS-1$
+		int i=0;
+		while (i<bookDao.listAllBooks().size()) {
+			assertEquals(bookDao.listAllBooks().get(i).getAmount(), books.get(i).getAmount());
+			assertEquals(bookDao.listAllBooks().get(i).getAuthor(), books.get(i).getAuthor());
+			assertEquals(bookDao.listAllBooks().get(i).getIsbn(), books.get(i).getIsbn());
+			assertEquals(bookDao.listAllBooks().get(i).getTitle(), books.get(i).getTitle());
+			i+=1;
+		}
 	}
 
-	@Ignore
 	@Test
 	public void testSearchByAuthor() {
-		Query q = this.em.createQuery("select b from " + Book.TABLE_NAME + " b where b.id=2"); //$NON-NLS-1$ //$NON-NLS-2$
-		List<Book> expected = q.getResultList();
-		
-		assertEquals(expected, this.bookDao.searchByAuthor("Martin")); //$NON-NLS-1$
+		assertEquals(books.get(0).getAuthor(), bookDao.searchByAuthor("Patrick").get(0).getAuthor());
 	}
 
-	@Ignore
 	@Test
 	public void testSearchByTitle() {
-		fail("Not yet implemented"); //$NON-NLS-1$
+		assertEquals(books.get(1).getTitle(), bookDao.searchByTitle("Clean").get(0).getTitle());
 	}
 
-	@Ignore
 	@Test
 	public void testSearchByAuthorAndTitle() {
-		fail("Not yet implemented"); //$NON-NLS-1$
+		assertEquals(books.get(0).getAuthor(), bookDao.searchByAuthorAndTitle("Java").get(0).getAuthor());
+	}
+	
+	@Test
+	public void testSelectById(){
+		assertEquals(books.get(0).getAuthor(), bookDao.selectById("0-07-882199-1").getAuthor());
 	}
 
 }

@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,6 +17,20 @@
 			by title<input type="radio" name="rBtn" checked="checked" value="rbtnNamePlusTitle" /> by author & title</p>
 		<p align="center"><input type="submit" name="submit" value="Search"></p>
 	</form>
-	<p align='center'><a href='index.jsp'>Return Home</p>
+	
+	<%
+		String atag;
+		if(session.getAttribute("admin")==null){
+		 	atag="<p align='center'><a href='index.jsp'>Return Home</a></p>";
+		}
+		else{
+			atag="<p align='center'><a href='admin.jsp'>Return Home</a></p>";
+		}
+	%>
+	
+	<%=
+			atag
+	%>
+	
 </body>
 </html>

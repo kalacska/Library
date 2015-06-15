@@ -17,6 +17,7 @@
 			<div id="link"><a href='BookListerServlet'>List of books</a></div><div id="link"><a href='search.jsp'>Search</a></div><div id="link"><a href='login.jsp'>Login</a></div>
 		</div>
 		<div id="container">
+			<div style="padding:20px;">
 			<br>
 			<p align="Justify">"Until then I had thought each book spoke of the things, human or divine, that lie outside books. 
 			Now I realized that not infrequently books speak of books: it is as if they spoke among themselves. 
@@ -29,6 +30,7 @@
 			<p align="Justify">This is a page of an imaginary library. You can check the list of all books available, as well as search for a specific author and/or title.
 			In case you know the proper username and password for the admin interface, you could also have the opportunity to add or delete any books.</p>
 			<p>God bless you and have a fabulous day!</p>
+			</div>
 		</div>
 	</div>
 </body>
