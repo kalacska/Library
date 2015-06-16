@@ -18,92 +18,87 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 public class Mail {
-	
-	private String to = "p.kalacska@gmail.com";
-	
-	
-   public void main() {
-      // Recipient's email ID needs to be mentioned.
-      
 
-      // Sender's email ID needs to be mentioned
-      String from = "magyarlibrary@gmail.com";
+	private String to = "p.kalacska@gmail.com"; //$NON-NLS-1$
 
-      final String username = "magyarlibrary";//change accordingly
-      final String password = "12345678*0";//change accordingly
+	public void main() {
+		// Recipient's email ID needs to be mentioned.
 
-      // Assuming you are sending email through relay.jangosmtp.net
-      String host = "smtp.gmail.com";
+		// Sender's email ID needs to be mentioned
+		String from = "magyarlibrary@gmail.com"; //$NON-NLS-1$
 
-      Properties props = new Properties();
-      props.put("mail.smtp.auth", "true");
-      props.put("mail.smtp.starttls.enable", "true");
-      props.put("mail.smtp.host", host);
-      props.put("mail.smtp.port", "25");
+		final String username = "magyarlibrary";//change accordingly //$NON-NLS-1$
+		final String password = "12345678*0";//change accordingly //$NON-NLS-1$
 
-      // Get the Session object.
-      Session session = Session.getInstance(props,
-         new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-               return new PasswordAuthentication(username, password);
-            }
-         });
+		// Assuming you are sending email through relay.jangosmtp.net
+		String host = "smtp.gmail.com"; //$NON-NLS-1$
 
-      try {
-         // Create a default MimeMessage object.
-         Message message = new MimeMessage(session);
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true"); //$NON-NLS-1$ //$NON-NLS-2$
+		props.put("mail.smtp.starttls.enable", "true"); //$NON-NLS-1$ //$NON-NLS-2$
+		props.put("mail.smtp.host", host); //$NON-NLS-1$
+		props.put("mail.smtp.port", "25"); //$NON-NLS-1$ //$NON-NLS-2$
 
-         // Set From: header field of the header.
-         message.setFrom(new InternetAddress(from));
+		// Get the Session object.
+		Session session = Session.getInstance(props,
+				new javax.mail.Authenticator() {
+					@Override
+					protected PasswordAuthentication getPasswordAuthentication() {
+						return new PasswordAuthentication(username, password);
+					}
+				});
 
-         // Set To: header field of the header.
-         message.setRecipients(Message.RecipientType.TO,
-            InternetAddress.parse(to));
+		try {
+			// Create a default MimeMessage object.
+			Message message = new MimeMessage(session);
 
-         // Set Subject: header field
-         message.setSubject("message");
+			// Set From: header field of the header.
+			message.setFrom(new InternetAddress(from));
 
-         // Create the message part
-         BodyPart messageBodyPart = new MimeBodyPart();
+			// Set To: header field of the header.
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse(this.to));
 
-         // Now set the actual message
-         messageBodyPart.setText("Message from Library!");
+			// Set Subject: header field
+			message.setSubject("message"); //$NON-NLS-1$
 
-         // Create a multipar message
-         Multipart multipart = new MimeMultipart();
+			// Create the message part
+			BodyPart messageBodyPart = new MimeBodyPart();
 
-         // Set text message part
-         multipart.addBodyPart(messageBodyPart);
+			// Now set the actual message
+			messageBodyPart.setText("Message from Library!"); //$NON-NLS-1$
 
-         // Part two is attachment
-         messageBodyPart = new MimeBodyPart();
-         String filename = "C:\\book_database.xml";
-         DataSource source = new FileDataSource(filename);
-         messageBodyPart.setDataHandler(new DataHandler(source));
-         messageBodyPart.setFileName(filename);
-         multipart.addBodyPart(messageBodyPart);
+			// Create a multipar message
+			Multipart multipart = new MimeMultipart();
 
-         // Send the complete message parts
-         message.setContent(multipart);
+			// Set text message part
+			multipart.addBodyPart(messageBodyPart);
 
-         // Send message
-         Transport.send(message);
-         
-  
-      } catch (MessagingException e) {
-         throw new RuntimeException(e);
-      }
-   }
+			// Part two is attachment
+			messageBodyPart = new MimeBodyPart();
+			String filename = "C:\\book_database.xml"; //$NON-NLS-1$
+			DataSource source = new FileDataSource(filename);
+			messageBodyPart.setDataHandler(new DataHandler(source));
+			messageBodyPart.setFileName(filename);
+			multipart.addBodyPart(messageBodyPart);
 
+			// Send the complete message parts
+			message.setContent(multipart);
 
-public String getTo() {
-	return to;
-}
+			// Send message
+			Transport.send(message);
 
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
-public void setTo(String to) {
-	this.to = to;
-}
-   
-   
+	public String getTo() {
+		return this.to;
+	}
+
+	public void setTo(String to) {
+		this.to = to;
+	}
+
 }

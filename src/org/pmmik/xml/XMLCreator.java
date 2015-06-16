@@ -29,17 +29,17 @@ public class XMLCreator {
 	private List<Book> bookList = new ArrayList<>();
 	private Document dom;
 	private static EntityManagerFactory factory;
-	private EntityManager em;	
+	private EntityManager em;
 	private BookDao bookDao;
-	
 
 	private void loadData() {
-		
-		factory = Persistence.createEntityManagerFactory(Globals.PERSISTENCE_UNIT_NAME);
+
+		factory = Persistence
+				.createEntityManagerFactory(Globals.PERSISTENCE_UNIT_NAME);
 		this.em = factory.createEntityManager();
 		this.bookDao = new BookDao(this.em);
-		
-		bookList=bookDao.listAllBooks();
+
+		this.bookList = this.bookDao.listAllBooks();
 	}
 
 	private void createDocument() {
@@ -92,14 +92,15 @@ public class XMLCreator {
 		Text addText = this.dom.createTextNode(b.getTitle());
 		tElement.appendChild(addText);
 		bElement.appendChild(tElement);
-		
+
 		Element isbnElement = this.dom.createElement("ISBN"); //$NON-NLS-1$
 		Text isbnText = this.dom.createTextNode(b.getIsbn());
 		isbnElement.appendChild(isbnText);
 		bElement.appendChild(isbnElement);
-		
+
 		Element amountElement = this.dom.createElement("Amount"); //$NON-NLS-1$
-		Text amountText = this.dom.createTextNode(Integer.toString(b.getAmount()));
+		Text amountText = this.dom.createTextNode(Integer.toString(b
+				.getAmount()));
 		amountElement.appendChild(amountText);
 		bElement.appendChild(amountElement);
 
@@ -107,34 +108,33 @@ public class XMLCreator {
 	}
 
 	@SuppressWarnings({ "resource" })
-	private void printToFile(){
+	private void printToFile() {
 
-		try
-		{
-			//print
+		try {
+			// print
 			OutputFormat format = new OutputFormat(this.dom);
 			format.setIndenting(true);
 
-			//to generate output to console use this serializer
-			//XMLSerializer serializer = new XMLSerializer(System.out, format);
+			// to generate output to console use this serializer
+			// XMLSerializer serializer = new XMLSerializer(System.out, format);
 
-
-			//to generate a file output use fileoutputstream instead of system.out
-			XMLSerializer serializer = new XMLSerializer(
-			new FileOutputStream(new File("C:\\book_database.xml")), format); //$NON-NLS-1$
+			// to generate a file output use fileoutputstream instead of
+			// system.out
+			XMLSerializer serializer = new XMLSerializer(new FileOutputStream(
+					new File("C:\\book_database.xml")), format); //$NON-NLS-1$
 
 			serializer.serialize(this.dom);
 
-		} catch(IOException ie) {
-		    ie.printStackTrace();
+		} catch (IOException ie) {
+			ie.printStackTrace();
 		}
 	}
-	
-	public void start(){
+
+	public void start() {
 		loadData();
 		createDocument();
 		createDOMTree();
 		printToFile();
 	}
-	
+
 }

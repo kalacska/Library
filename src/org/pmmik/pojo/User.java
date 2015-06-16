@@ -7,17 +7,18 @@ import javax.persistence.Table;
 @Entity(name = User.TABLE_NAME)
 @Table(name = User.TABLE_NAME, schema = PersistentObject.SCHEMA)
 public class User extends PersistentObject {
-	
+
 	public final static String TABLE_NAME = "users"; //$NON-NLS-1$
 	public final static String USERNAME = "username"; //$NON-NLS-1$
 	public final static String PASSWORD = "password"; //$NON-NLS-1$
-	
-	@Column(name=USERNAME, nullable=false, unique=true)
+
+	@Column(name = USERNAME, nullable = false, unique = true)
 	private String username;
-	@Column(name=PASSWORD, nullable=false)
+	@Column(name = PASSWORD, nullable = false)
 	private String password;
-	
-	public User() {}
+
+	public User() {
+	}
 
 	public String getUsername() {
 		return this.username;

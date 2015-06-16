@@ -10,14 +10,14 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class PersistentObject implements Serializable {
-	
+
 	public final static String SCHEMA = "APP"; //$NON-NLS-1$
 	public final static String ID = "id"; //$NON-NLS-1$
-	
-	@Id	
-	@Column(name=PersistentObject.ID)
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;	
+
+	@Id
+	@Column(name = PersistentObject.ID)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 
 	/**
 	 * 
@@ -33,13 +33,16 @@ public abstract class PersistentObject implements Serializable {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -50,7 +53,9 @@ public abstract class PersistentObject implements Serializable {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -65,5 +70,5 @@ public abstract class PersistentObject implements Serializable {
 		if (this.id != other.id)
 			return false;
 		return true;
-	}	
+	}
 }

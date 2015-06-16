@@ -21,33 +21,36 @@ import org.pmmik.dao.UserDao;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private EntityManager em;
 	private EntityManagerFactory factory;
 	private UserDao userDao;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public LoginServlet() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.factory = Persistence.createEntityManagerFactory(Globals.PERSISTENCE_UNIT_NAME);
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		this.factory = Persistence
+				.createEntityManagerFactory(Globals.PERSISTENCE_UNIT_NAME);
 		this.em = this.factory.createEntityManager();
 		this.userDao = new UserDao(this.em);
-		
-		if (this.userDao.login(request.getParameter("name"), request.getParameter("password"))) { //$NON-NLS-1$ //$NON-NLS-2$
-			HttpSession session=request.getSession();
-			session.setAttribute("admin", true);
+
+		if (this.userDao.login(
+				request.getParameter("name"), request.getParameter("password"))) { //$NON-NLS-1$ //$NON-NLS-2$
+			HttpSession session = request.getSession();
+			session.setAttribute("admin", true); //$NON-NLS-1$
 			response.sendRedirect("admin.jsp"); //$NON-NLS-1$
-		}
-		else {
+		} else {
 			response.sendRedirect("loginerror.html"); //$NON-NLS-1$
 		}
 	}

@@ -9,14 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.pmmik.email.Email;
 import org.pmmik.email.Mail;
 import org.pmmik.xml.XMLCreator;
-
-
-
-
-
 
 /**
  * Servlet implementation class XMLServlet
@@ -24,47 +18,41 @@ import org.pmmik.xml.XMLCreator;
 @WebServlet("/XMLServlet")
 public class XMLServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public XMLServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private PrintWriter writer;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	public XMLServlet() {
+		super();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		Email email=new Email();
-		
-		
-		if(request.getParameter("submit")!=null){
-			XMLCreator c=new XMLCreator();
+	@Override
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// Email email=new Email();
+
+		if (request.getParameter("submit") != null) { //$NON-NLS-1$
+			XMLCreator c = new XMLCreator();
 			c.start();
-			
+
 			/*
-			email.setTo(request.getParameter("email"));
-			email.sendMail("message", "Message from Library", request.getParameter("email"));
-			*/
-			
-			Mail mail=new Mail();
-			mail.setTo(request.getParameter("email"));
+			 * email.setTo(request.getParameter("email"));
+			 * email.sendMail("message", "Message from Library",
+			 * request.getParameter("email"));
+			 */
+
+			Mail mail = new Mail();
+			mail.setTo(request.getParameter("email")); //$NON-NLS-1$
 			mail.main();
-			
-			String htmlMessage="<html><head></head><body bgcolor='#C6EAFF'><h1 align='center'>Successfull!</h1><p align='center'><a href='index.jsp'>Return Home</a></p></body></html>";
-			PrintWriter writer=response.getWriter();
-			writer.print(htmlMessage);
-			
+
+			String htmlMessage = "<html><head></head><body bgcolor='#C6EAFF'><h1 align='center'>Successfull!</h1><p align='center'><a href='index.jsp'>Return Home</a></p></body></html>"; //$NON-NLS-1$
+			this.writer = response.getWriter();
+			this.writer.print(htmlMessage);
 		}
 	}
 
