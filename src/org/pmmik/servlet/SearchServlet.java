@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.pmmik.dao.BookDao;
 import org.pmmik.dao.Globals;
@@ -60,7 +61,10 @@ public class SearchServlet extends HttpServlet {
 			 books=this.bDao.searchByAuthorAndTitle(text);
 		}
 		
-		String htmlMessage="<!DOCTYPE html>"+ //$NON-NLS-1$
+		HttpSession session=request.getSession();
+		
+		if(session.getAttribute("admin")==null){
+			String htmlMessage="<!DOCTYPE html>"+ //$NON-NLS-1$
 					   "<html>"+ //$NON-NLS-1$
 					   "<head>"+ //$NON-NLS-1$
 					   "	<title>Search result</title>"+ //$NON-NLS-1$
@@ -92,6 +96,46 @@ public class SearchServlet extends HttpServlet {
 					"</html>"; //$NON-NLS-1$
 		
 		this.writer.print(htmlMessage);
+			
+		}
+		else{
+		
+		String htmlMessage="<!DOCTYPE html>"+ //$NON-NLS-1$
+					   "<html>"+ //$NON-NLS-1$
+					   "<head>"+ //$NON-NLS-1$
+					   "	<title>Search result</title>"+ //$NON-NLS-1$
+					   "	<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">" + //$NON-NLS-1$
+					   "</head>"+ //$NON-NLS-1$
+					   "<body bgcolor='#C6EAFF'>"; //$NON-NLS-1$
+		
+		if(books.isEmpty()){
+			htmlMessage += "<p align='center' style='font-weight:bold;'>No result!</p>"; //$NON-NLS-1$
+		}
+		else{
+			
+			htmlMessage +=
+						"<form method='post' action='DeleteServlet' accept-charset='ISO-8859-2'>"+
+						"<h1 align='center'>Search Result</h1>"+ //$NON-NLS-1$
+						"	<table align='center'"+ //$NON-NLS-1$
+						"		<tr><th><b>Author</b></th><th><b>Title</b></th><th><b>ISBN</b></th><th><b>Loanable</b></th><th><b>Amount</b></th><th><b>Delete</b></th></tr>"; //$NON-NLS-1$
+							   
+				for (Book book : books) {
+					htmlMessage+="<tr><td>"+book.getAuthor()+"</td><td>"+book.getTitle()+"</td><td>"+ //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				                 book.getIsbn()+"</td><td>"+book.isLoanable()+"</td><td>"+book.getAmount()+"</td><td><input type='checkbox' name='deleteCB' value="+book.getIsbn()+"/></td>"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				}
+			
+			htmlMessage+="	</table>"; //$NON-NLS-1$
+		}
+		htmlMessage +=
+					"<p align='center'><input type='submit' name='submit' value='Delete'/></p>"+
+					"<p align='center'><a href='\\search.jsp'>Back to Search</p>"+ //$NON-NLS-1$
+					"<p align='center'><a href='\\index.jsp'>Return Home</p>"+ //$NON-NLS-1$
+					"</form>"+
+					"</body>"+ //$NON-NLS-1$
+					"</html>"; //$NON-NLS-1$
+		
+		this.writer.print(htmlMessage);
+		}
 	}
 
 }

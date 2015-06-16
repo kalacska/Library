@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
+import org.pmmik.comparator.ComparatorClass;
 //import org.eclipse.jetty.server.session.JDBCSessionManager.Session;
 import org.pmmik.dao.BookDao;
 import org.pmmik.dao.Globals;
@@ -71,6 +73,8 @@ public class BookListerServlet extends HttpServlet {
 			List<Book> books;
 			try {
 				books = this.bookDao.listAllBooks();
+				ComparatorClass c=new ComparatorClass();
+				books.sort(c);
 				request.getSession().setAttribute("books", books); //$NON-NLS-1$
 
 				if(request.getSession().getAttribute("admin")==null){
