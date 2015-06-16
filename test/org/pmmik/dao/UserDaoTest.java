@@ -24,8 +24,8 @@ public class UserDaoTest {
 
 	@Test
 	public void testLogin() {
-		assertTrue(dao.login("admin", "admin"));
-		assertFalse(dao.login("admin", "123"));
+		assertTrue(this.dao.login("admin", "admin")); //$NON-NLS-1$ //$NON-NLS-2$
+		assertFalse(this.dao.login("admin", "123")); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 }
