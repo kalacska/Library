@@ -76,7 +76,7 @@ public class Mail {
 
 			// Part two is attachment
 			messageBodyPart = new MimeBodyPart();
-			String filename = "C:\\book_database.xml"; //$NON-NLS-1$
+			String filename = "\\book_database.xml"; //$NON-NLS-1$
 			DataSource source = new FileDataSource(filename);
 			messageBodyPart.setDataHandler(new DataHandler(source));
 			messageBodyPart.setFileName(filename);

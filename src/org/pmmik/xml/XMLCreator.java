@@ -121,7 +121,7 @@ public class XMLCreator {
 			// to generate a file output use fileoutputstream instead of
 			// system.out
 			XMLSerializer serializer = new XMLSerializer(new FileOutputStream(
-					new File("C:\\book_database.xml")), format); //$NON-NLS-1$
+					new File("\\book_database.xml")), format); //$NON-NLS-1$
 
 			serializer.serialize(this.dom);
 
