@@ -91,7 +91,7 @@ public class SearchServlet extends HttpServlet {
 				htmlMessage += "	</table>"; //$NON-NLS-1$
 			}
 			htmlMessage += "<p align='center'><a href='\\search.jsp'>Back to Search</p>" + //$NON-NLS-1$
-					"<p align='center'><a href='\\index.jsp'>Return Home</p>" + //$NON-NLS-1$
+					"<p align='center'><a href='\\admin.jsp'>Return Home</p>" + //$NON-NLS-1$
 					"</body>" + //$NON-NLS-1$
 					"</html>"; //$NON-NLS-1$
 
@@ -125,7 +125,7 @@ public class SearchServlet extends HttpServlet {
 			}
 			htmlMessage += "<p align='center'><input type='submit' name='submit' value='Delete'/></p>" + //$NON-NLS-1$
 					"<p align='center'><a href='\\search.jsp'>Back to Search</p>" //$NON-NLS-1$
-					+ "<p align='center'><a href='\\index.jsp'>Return Home</p>" + //$NON-NLS-1$
+					+ "<p align='center'><a href='\\admin.jsp'>Return Home</p>" + //$NON-NLS-1$
 					"</form>" + //$NON-NLS-1$
 					"</body>" + //$NON-NLS-1$
 					"</html>"; //$NON-NLS-1$

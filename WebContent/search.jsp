@@ -27,10 +27,10 @@
 
 	<%
 		String atag;
-		if (session.getAttribute("admin") == null) {
-			atag = "<p align='center'><a href='index.jsp'>Return Home</a></p>";
+		if (session.getAttribute("admin") == null) { //$NON-NLS-1$
+			atag = "<p align='center'><a href='index.jsp'>Return Home</a></p>"; //$NON-NLS-1$
 		} else {
-			atag = "<p align='center'><a href='admin.jsp'>Return Home</a></p>";
+			atag = "<p align='center'><a href='admin.jsp'>Return Home</a></p>"; //$NON-NLS-1$
 		}
 	%>
 
